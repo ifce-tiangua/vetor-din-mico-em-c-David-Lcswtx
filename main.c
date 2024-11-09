@@ -30,9 +30,6 @@ int main(){
 			printf(",");
 		}
 	
-		if(i == a){
-			printf("]");
-		}
 	}
 	printf("]\n");
 	
