@@ -27,7 +27,7 @@ int main(){
 		printf("%d", v[i]);
 		
 		if(i < a - 1){
-			printf(",");
+			printf(", ");
 		}
 	
 	}
