@@ -1,41 +1,59 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-int main(){
+int main()
+
+{
 	
-	int *v, a;
-	int i;
+	int **m; 
+	int a, b; // a = linha - b = coluna
+	int i, k; // elementos para os loops no for
 	
 	scanf("%d", &a);
+	scanf("%d", &b);
 	
-	v = malloc(a * sizeof(int));
+	if(a <= 0 || b <= 0){
+		
+		printf("[matriz vazia]\n");
+		
+		return 0;
+	}
+	else{
 	
-	if(a <= 0){
-		printf("[vazio]\n");
-	}else{
+	//alocar memoria p matriz
+	m = (int **)malloc(a * sizeof(int *));
 	
 	for(i = 0; i < a; i++){
-		scanf("%d", &v[i]);
+		m[i] = malloc(b * sizeof(int));
 	}
-		
-	for(i =  0; i < a; i++){
-		
-		if(i == 0){
-			printf("[");
-		}
-		
-		printf("%d", v[i]);
-		
-		if(i < a - 1){
-			printf(", ");
-		}
 	
+	//acima alocacao - abaixo scan elementos
+	
+	for(i = 0; i < a; i++){
+		for(k = 0; k < b; k++){
+			scanf("%d", &m[i][k]);
+		}
 	}
-	printf("]\n");
 	
-}
+	//impressao dos elemnetos da matriz
+	for(i = 0; i < a; i++){
+		for(k = 0; k < b; k++){
+			printf("%d", m[i][k]);
+			if(k < b-1){
+				printf(" ");
+			}
+		}
+		printf("\n");
+	}
 	
-	free(v);
+	//desacolar memoria
+	for(i = 0; i < a; i++){
+		free(m[i]);
+	}
+	free (m);
 	
 	return 0;
+	
+	}
+	
 }
